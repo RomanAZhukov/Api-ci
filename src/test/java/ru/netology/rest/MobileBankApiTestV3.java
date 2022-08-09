@@ -33,10 +33,10 @@ class MobileBankApiTestV3 {
                 // static import для JsonSchemaValidator.matchesJsonSchemaInClasspath
                 .body(matchesJsonSchemaInClasspath("accounts.schema.json"))
 
-               
+
                 .contentType(ContentType.JSON)
                 .body("", hasSize(3))
-                .body("[0].currency", equalTo("RUB"))
+                .body("[0].currency", equalTo("RUR"))
                 .body("[0].balance", greaterThanOrEqualTo(0))
         ;
     }
