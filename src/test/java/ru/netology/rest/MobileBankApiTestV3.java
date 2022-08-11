@@ -20,8 +20,13 @@ class MobileBankApiTestV3 {
                 .get("/demo/accounts")
                 // Проверки
                 .then()
+                .statusCode(200)
+                // специализированные проверки - лучше
+                .contentType(ContentType.JSON)
                 .body(matchesJsonSchemaInClasspath("accounts.schema.json"))
+                .body("", hasSize(3))
+                .body("[0].currency", equalTo("RUB"))
+                .body("[0].balance", greaterThanOrEqualTo(0))
         ;
     }
 }
-
